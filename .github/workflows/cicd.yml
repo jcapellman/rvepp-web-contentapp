@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         FILEPATH_MVC: '/home/runner/work/rvepp-web/rvepp-web/rvepp.web.frontend/rvepp.web.frontend.csproj'
-        FOLDER_MVC: 'rvepp.web'
+        FOLDER_MVC: 'rvepp-web'
         TAG_MVC: 'rvepp-web-frontend'
         PUBLISH_FLAGS: '-r linux-x64 /t:PublishContainer -c Release'
         VERSION: '2024.7.${{github.RUN_NUMBER}}'
