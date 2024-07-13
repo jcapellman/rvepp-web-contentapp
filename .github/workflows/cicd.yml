@@ -3,10 +3,10 @@ name: Build and Push to GCR and then deploy to Cloud Run
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
       
 jobs:
   build:
