@@ -1,0 +1,58 @@
+name: Build and Push to GCR and then deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        FILEPATH_MVC: '/home/runner/work/rvepp-web/rvepp.web.frontend/rvepp.web.frontend.csproj'
+        FOLDER_MVC: 'rvepp.web'
+        TAG_MVC: 'rvepp-web-frontend'
+        PUBLISH_FLAGS: '-r linux-x64 /t:PublishContainer -c Release'
+        VERSION: '2024.7.${{github.RUN_NUMBER}}'
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+      
+    - name: Restore MVC dependencies
+      run: dotnet restore ${{env.FILEPATH_MVC}}
+
+    - name: Build Frontend Container
+      run: dotnet publish ${{env.FILEPATH_MVC}} ${{env.PUBLISH_FLAGS}} /p:Version='${{env.VERSION}}'
+
+    - name: Tag Frontend Container
+      run: docker tag ${{env.TAG_MVC}}:latest us-central1-docker.pkg.dev/${{secrets.GCP_PROJECT_ID}}/${{env.FOLDER_MVC}}/${{env.TAG_MVC}}:latest
+    
+    - name: Authenticate to GCP
+      uses: google-github-actions/auth@v2
+      with:
+        project_id: '${{ secrets.GCP_PROJECT_ID }}'
+        credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_JSON }}"
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v2'
+
+    - name: Configure Docker Auth
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    - name: Push Frontend Container to GCP
+      run: docker push us-central1-docker.pkg.dev/${{secrets.GCP_PROJECT_ID}}/${{env.FOLDER_MVC}}/${{env.TAG_MVC}}:latest
+
+    - name: Deploy MVC to CLoud Run
+      uses: 'google-github-actions/deploy-cloudrun@v2'
+      with:
+        service: ${{env.TAG_MVC}}
+        image: us-central1-docker.pkg.dev/${{secrets.GCP_PROJECT_ID}}/${{env.FOLDER_MVC}}/${{env.TAG_MVC}}
