@@ -1,10 +1,9 @@
 :root {
-    --main-text-color: #003262;
-    --alt-text-color: #FDB515;
-    --alt-bright-text-color: #FFF;
+    --dark-text-color: #003262;
+    --bright-text-color: #FDB515;
 
-    --main-bg-color: #011e41;
-    --alt-bg-color: #FDB515;
+    --dark-bg-color: #003262;
+    --bright-bg-color: #FDB515;
 }
 
 html {
@@ -17,11 +16,17 @@ html {
   }
 }
 
+a { 
+    text-decoration: none;
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 footer {
+    background-color: var(--bright-bg-color);
+    color: var(--dark-text-color);
     text-align: center;
     font-size: x-small;
 }
@@ -32,29 +37,28 @@ html {
 }
 
 body {
-    background-color: var(--main-bg-color);    
-    color: var(--alt-text-color);
+    background-color: var(--dark-bg-color);    
+    color: var(--bright-text-color);
 }
 
-.bg-rvepp-alt {
-    background-color: var(--alt-bg-color) !important;
+.bg-rvepp-bright {
+    background-color: var(--bright-bg-color) !important;
 }
 
-.bg-rvepp-main {
-    background-color: var(--main-bg-color) !important;
+.bg-rvepp-dark {
+    background-color: var(--dark-bg-color) !important;
 }
 
-.text-rvepp-main {
-    color: var(--main-text-color);
+.text-rvepp-dark {
+    color: var(--dark-text-color);
     font-weight: bold;
 }
 
-.text-rvepp-alt {
-    color: var(--alt-text-color);
+.text-rvepp-bright {
+    color: var(--bright-text-color);
     font-weight: bold;
 }
 
-.text-rvepp-alt-bright {
-    color: var(--alt-bright-text-color);
-    font-weight: bold;
+a:hover {
+    color: white;
 }
