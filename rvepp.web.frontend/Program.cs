@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+
+using rvepp.web.frontend.Database;
+
 namespace rvepp.web.frontend
 {
     public class Program
@@ -6,16 +10,24 @@ namespace rvepp.web.frontend
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Configuration.AddEnvironmentVariables();
+
             builder.Services.AddRazorPages();
+
+            var configuration = builder.Configuration.GetSection("RveppDbContext");
+
+            if (configuration.Value is null)
+            {
+                throw new Exception("Configuration not set");
+            }
+
+            builder.Services.AddDbContext<RveppDbContext>(options => options.UseNpgsql(configuration.Value));
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -27,6 +39,13 @@ namespace rvepp.web.frontend
             app.UseAuthorization();
 
             app.MapRazorPages();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<RveppDbContext>();
+
+                db.Database.Migrate();
+            }
 
             app.Run();
         }
