@@ -33,7 +33,7 @@ namespace rvepp.web.frontend
                         ValidIssuer = apiConfig?.JWTIssuer,
                         ValidAudience = apiConfig?.JWTAudience,
                         ClockSkew = TimeSpan.Zero,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig.JWTSecret))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig is null ? throw new Exception("apiconfig was null") : apiConfig.JWTSecret))
                     };
                 });
             }
