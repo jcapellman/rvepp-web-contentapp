@@ -2,10 +2,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace rvepp.web.frontend.Pages
 {
-    public class IndexModel(ILogger<IndexModel> logger) : PageModel
+    public class IndexModel() : PageModel
     {
-        private readonly ILogger<IndexModel> _logger = logger;
-
         public void OnGet()
         {
 
