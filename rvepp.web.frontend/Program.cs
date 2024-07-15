@@ -21,6 +21,11 @@ namespace rvepp.web.frontend
                 throw new Exception("Configuration not set");
             }
 
+            builder.Services.AddControllersWithViews();
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
             builder.Services.AddDbContext<RveppDbContext>(options => options.UseNpgsql(configuration.Value));
 
             var app = builder.Build();
@@ -29,6 +34,10 @@ namespace rvepp.web.frontend
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
+            } else
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
