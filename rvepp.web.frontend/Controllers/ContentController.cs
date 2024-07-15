@@ -13,7 +13,7 @@ namespace rvepp.web.frontend.Controllers
     [ApiController]
     public class ContentController(RveppDbContext dbContext) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet]        
         [Route("{contentType}")]
         public List<Content> Get(ContentTypes contentType) => [.. dbContext.Content.Where(a => a.ContentType == contentType && a.Active)];
 
