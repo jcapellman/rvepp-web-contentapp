@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens;
+using rvepp.web.frontend.Configuration;
 using rvepp.web.frontend.Database;
+using System.Text;
 
 namespace rvepp.web.frontend
 {
@@ -11,6 +14,29 @@ namespace rvepp.web.frontend
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Configuration.AddEnvironmentVariables();
+            var apiConfig = builder.Configuration.GetSection(nameof(ApiConfiguration)).Get<ApiConfiguration>();
+
+            if (apiConfig is not null)
+            {
+                builder.Services.AddSingleton(apiConfig);
+
+                builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = apiConfig?.JWTIssuer,
+                        ValidAudience = apiConfig?.JWTAudience,
+                        ClockSkew = TimeSpan.Zero,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig.JWTSecret))
+                    };
+                });
+            }
 
             builder.Services.AddRazorPages();
 
@@ -43,8 +69,8 @@ namespace rvepp.web.frontend
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseAuthentication();
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.MapRazorPages();
