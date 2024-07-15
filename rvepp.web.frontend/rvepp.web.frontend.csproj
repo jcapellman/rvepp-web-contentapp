@@ -17,4 +17,8 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
 	  <RuntimeIdentifier>linux-musl-x64</RuntimeIdentifier>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+  </ItemGroup>
 </Project>
