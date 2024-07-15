@@ -15,10 +15,12 @@ namespace rvepp.web.frontend.Controllers
     {
         private string GenerateToken(string hashToken)
         {
+            var iat = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, apiConfiguration.JWTSubject),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString(CultureInfo.InvariantCulture)),
+                new Claim(JwtRegisteredClaimNames.Iat, iat.ToString()),
                 new Claim("Token", hashToken)
             };
 
