@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using rvepp.web.frontend.Database;
 using rvepp.web.frontend.Database.Tables;
@@ -7,6 +8,7 @@ using rvepp.web.frontend.Objects.JSON;
 
 namespace rvepp.web.frontend.Controllers
 {
+    [Authorize]
     [Route("api/content")]
     [ApiController]
     public class ContentController(RveppDbContext dbContext) : ControllerBase
