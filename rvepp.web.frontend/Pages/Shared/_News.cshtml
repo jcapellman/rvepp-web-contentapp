@@ -1,0 +1,9 @@
+﻿@using rvepp.web.frontend.Common
+
+@model rvepp.web.frontend.Database.Tables.Content
+
+<h1 class="text-rvepp-bright">@Model.Title</h1>
+
+<div>
+    @Model.Body.ToHtmlString()
+</div>
