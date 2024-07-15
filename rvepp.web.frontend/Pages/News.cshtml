@@ -6,7 +6,17 @@
 
 <div class="text-left">
     <h1 class="display-4 text-rvepp-bright">News</h1>
-    <p>
-        Coming soon...
-    </p>
+
+    @if (Model.NewsPosts is null || Model.NewsPosts.Count == 0)
+    {
+        <p>
+            Coming soon...
+        </p>
+    } else
+    {
+        @foreach (var post in Model.NewsPosts)
+        {
+            @await Html.PartialAsync("_News", post);
+        }
+    }
 </div>
