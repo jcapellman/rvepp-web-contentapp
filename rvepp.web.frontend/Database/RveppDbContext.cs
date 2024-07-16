@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using rvepp.web.frontend.Database.Tables;
+using RVEPP.Web.Frontend.Database.Tables;
 
-namespace rvepp.web.frontend.Database
+namespace RVEPP.Web.Frontend.Database
 {
     public class RveppDbContext(DbContextOptions options) : DbContext(options)
     {

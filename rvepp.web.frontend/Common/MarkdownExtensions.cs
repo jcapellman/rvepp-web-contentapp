@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Html;
 
-namespace rvepp.web.frontend.Common
+namespace RVEPP.Web.Frontend.Common
 {
     public static class MarkdownExtension
     {

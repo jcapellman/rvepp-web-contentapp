@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace rvepp.web.frontend.Common
+namespace RVEPP.Web.Frontend.Common
 {
     public static class StringExtensions
     {

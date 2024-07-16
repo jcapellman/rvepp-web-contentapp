@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace rvepp.web.frontend.Enums
+namespace RVEPP.Web.Frontend.Enums
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ContentTypes

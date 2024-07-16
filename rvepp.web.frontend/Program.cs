@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using rvepp.web.frontend.Configuration;
-using rvepp.web.frontend.Database;
+using RVEPP.Web.Frontend.Configuration;
+using RVEPP.Web.Frontend.Database;
 using System.Text;
 
-namespace rvepp.web.frontend
+namespace RVEPP.Web.Frontend
 {
     public class Program
     {

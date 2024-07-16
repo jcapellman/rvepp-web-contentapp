@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace rvepp.web.frontend.Database.Tables.Base
+namespace RVEPP.Web.Frontend.Database.Tables.Base
 {
     public class BaseTable
     {

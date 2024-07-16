@@ -1,4 +1,4 @@
-﻿namespace rvepp.web.frontend.Configuration
+﻿namespace RVEPP.Web.Frontend.Configuration
 {
     public class ApiConfiguration
     {

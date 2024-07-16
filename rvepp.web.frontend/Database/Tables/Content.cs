@@ -1,7 +1,7 @@
-﻿using rvepp.web.frontend.Database.Tables.Base;
-using rvepp.web.frontend.Enums;
+﻿using RVEPP.Web.Frontend.Database.Tables.Base;
+using RVEPP.Web.Frontend.Enums;
 
-namespace rvepp.web.frontend.Database.Tables
+namespace RVEPP.Web.Frontend.Database.Tables
 {
     public class Content : BaseTable
     {

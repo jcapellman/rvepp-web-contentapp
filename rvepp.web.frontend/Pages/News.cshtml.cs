@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-using rvepp.web.frontend.Database;
-using rvepp.web.frontend.Database.Tables;
+using RVEPP.Web.Frontend.Database;
+using RVEPP.Web.Frontend.Database.Tables;
 
-namespace rvepp.web.frontend.Pages
+namespace RVEPP.Web.Frontend.Pages
 {
     public class NewsModel(RveppDbContext dbContext) : PageModel
     {

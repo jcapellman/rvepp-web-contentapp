@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace rvepp.web.frontend.Migrations
+namespace RVEPP.Web.Frontend.Migrations
 {
     /// <inheritdoc />
     public partial class Identity : Migration

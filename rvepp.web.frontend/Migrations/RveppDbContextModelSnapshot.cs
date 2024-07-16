@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using rvepp.web.frontend.Database;
+using RVEPP.Web.Frontend.Database;
 
 #nullable disable
 
-namespace rvepp.web.frontend.Migrations
+namespace RVEPP.Web.Frontend.Migrations
 {
     [DbContext(typeof(RveppDbContext))]
     partial class RveppDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace rvepp.web.frontend.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("rvepp.web.frontend.Database.Tables.Content", b =>
+            modelBuilder.Entity("RVEPP.Web.Frontend.Database.Tables.Content", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

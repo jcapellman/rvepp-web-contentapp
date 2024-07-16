@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using rvepp.web.frontend.Database;
-using rvepp.web.frontend.Database.Tables;
-using rvepp.web.frontend.Enums;
-using rvepp.web.frontend.Objects.JSON;
+using RVEPP.Web.Frontend.Database;
+using RVEPP.Web.Frontend.Database.Tables;
+using RVEPP.Web.Frontend.Enums;
+using RVEPP.Web.Frontend.Objects.JSON;
 
-namespace rvepp.web.frontend.Controllers
+namespace RVEPP.Web.Frontend.Controllers
 {
     [Authorize]
     [Route("api/content")]

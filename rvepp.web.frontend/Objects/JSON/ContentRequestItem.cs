@@ -1,6 +1,6 @@
-﻿using rvepp.web.frontend.Enums;
+﻿using RVEPP.Web.Frontend.Enums;
 
-namespace rvepp.web.frontend.Objects.JSON
+namespace RVEPP.Web.Frontend.Objects.JSON
 {
     public class ContentRequestItem
     {

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using rvepp.web.frontend.Configuration;
-using rvepp.web.frontend.Common;
-using rvepp.web.frontend.Objects.JSON;
+using RVEPP.Web.Frontend.Configuration;
+using RVEPP.Web.Frontend.Common;
+using RVEPP.Web.Frontend.Objects.JSON;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace rvepp.web.frontend.Controllers
+namespace RVEPP.Web.Frontend.Controllers
 {
     [Route("/api/account")]
     public class AccountController(ApiConfiguration apiConfiguration) : ControllerBase
