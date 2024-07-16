@@ -59,6 +59,11 @@ body {
     font-weight: bold;
 }
 
+.text-rvepp-white {
+    color: white;
+    font-weight: bold;
+}
+
 a:hover {
     color: white;
 }
