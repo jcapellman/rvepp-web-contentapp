@@ -20,4 +20,16 @@
             </div>
         </div>
     }
+
+    @if (Model.LatestDownload is not null)
+    {
+        <div class="card bg-rvepp-bright">
+            <h5 class="card-header text-rvepp-dark text-uppercase">Latest Download</h5>
+            <div class="card-body bg-rvepp-bright">
+                <p class="card-text text-rvepp-dark">
+                    @await Html.PartialAsync("_Downloads", Model.LatestDownload)
+                </p>
+            </div>
+        </div>
+    }
 </div>
