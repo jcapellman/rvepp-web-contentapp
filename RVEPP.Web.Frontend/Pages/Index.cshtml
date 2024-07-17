@@ -9,4 +9,15 @@
     <p>
         Home of the first endpoint protection designed from the ground up for RISC-V.
     </p>
+
+    @if (Model.LatestNews is not null) {
+        <div class="card bg-rvepp-bright">
+            <h5 class="card-header text-rvepp-dark text-uppercase">Latest News</h5>
+            <div class="card-body bg-rvepp-bright">
+                <p class="card-text text-rvepp-dark">
+                    @await Html.PartialAsync("_News", Model.LatestNews)
+                </p>
+            </div>
+        </div>
+    }
 </div>
