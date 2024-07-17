@@ -18,26 +18,21 @@ namespace RVEPP.Web.Frontend.Controllers
         public List<Content> Get(ContentTypes contentType) => [.. dbContext.Content.Where(a => a.ContentType == contentType && a.Active)];
 
         [HttpPost]
-        public ActionResult NewContent(ContentRequestItem requestItem)
+        public async Task<ActionResult> NewContentAsync(ContentRequestItem requestItem)
         {
             var newContent = new Content {
                 Body = requestItem.Body,
                 ContentType = requestItem.ContentType,
-                Title = requestItem.Title,
-                Active = true,
-                Created = DateTime.Now,
-                Modified = DateTime.Now
+                Title = requestItem.Title
             };
 
             dbContext.Content.Add(newContent);
 
-            dbContext.SaveChanges();
-
-            return Ok();
+            return await dbContext.SaveChangesAsync() > 0 ? Ok() : BadRequest("Failure saving to database");
         }
 
         [HttpPatch]
-        public ActionResult UpdateContent(ContentRequestItem requestItem)
+        public async Task<ActionResult> UpdateContentAsync(ContentRequestItem requestItem)
         {
             if (!requestItem.Id.HasValue)
             {
@@ -54,15 +49,12 @@ namespace RVEPP.Web.Frontend.Controllers
             existingContent.Title = requestItem.Title;
             existingContent.ContentType = requestItem.ContentType;
             existingContent.Body = requestItem.Body;
-            existingContent.Modified = DateTime.Now;
 
-            dbContext.SaveChanges();
-
-            return Ok();
+            return await dbContext.SaveChangesAsync() > 0 ? Ok() : BadRequest("Failure saving to database");
         }
 
         [HttpDelete]
-        public ActionResult DeleteContent(int id)
+        public async Task<ActionResult> DeleteContentAsync(int id)
         {
             var existingContent = dbContext.Content.FirstOrDefault(a => a.Id == id && a.Active);
 
@@ -72,11 +64,8 @@ namespace RVEPP.Web.Frontend.Controllers
             }
 
             existingContent.Active = false;
-            existingContent.Modified = DateTime.Now;
-
-            dbContext.SaveChanges();
-
-            return Ok();
+            
+            return await dbContext.SaveChangesAsync() > 0 ? Ok() : BadRequest("Failure saving to database");
         }
     }
 }
