@@ -16,7 +16,9 @@
     {
         @foreach (var post in Model.NewsPosts)
         {
-            @await Html.PartialAsync("_News", post);
+            <div class="card-body bg-rvepp-bright rounded card-padding">
+                @await Html.PartialAsync("_News", post)
+            </div>
         }
     }
 </div>
