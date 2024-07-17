@@ -67,3 +67,11 @@ body {
 a:hover {
     color: white;
 }
+
+.rounded {
+    border-radius: 5px;
+}
+
+.card-padding {
+    padding: 16px;
+}
