@@ -1,4 +1,6 @@
 ﻿@page
+@using RVEPP.Web.Frontend.Common
+
 @model RVEPP.Web.Frontend.Pages.DownloadModel
 @{
     ViewData["Title"] = "Download";
@@ -6,7 +8,21 @@
 
 <div class="text-left">
     <h1 class="display-4 text-rvepp-bright">Download</h1>
-    <p>
-        Coming soon...
-    </p>
+
+    @if (Model.Downloads is null)
+    {
+        <p>
+            Coming soon...
+        </p>
+    } else
+    {
+        @foreach (var download in Model.Downloads)
+        {
+            <p>
+                <h2>@download.Title</h2>
+
+                @download.Body.ToHtmlString()
+            </p>
+        }
+    }
 </div>
