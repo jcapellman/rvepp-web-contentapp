@@ -6,6 +6,8 @@ namespace RVEPP.Web.Frontend.Enums
     public enum ContentTypes
     {
         News = 1,
-        Downloads = 2
+        Downloads = 2,
+        Documentation = 3,
+        About = 4
     }
 }
