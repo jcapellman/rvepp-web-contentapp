@@ -1,18 +1,14 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 using RVEPP.Web.Frontend.Database;
 using RVEPP.Web.Frontend.Database.Tables;
+using RVEPP.Web.Frontend.Pages.Base;
 
 namespace RVEPP.Web.Frontend.Pages
 {
-    public class IndexModel(RveppDbContext dbContext) : PageModel
+    public class IndexModel(RveppDbContext dbContext) : BasePageModel(dbContext)
     {
         public Content? LatestNews { get; private set; }
 
         public Content? LatestDownload { get; private set; }
-
-        private Content? GetLatestContentByType(Enums.ContentTypes type) =>
-            dbContext.Content.Where(a => a.ContentType == type && a.Active).OrderByDescending(a => a.Created).FirstOrDefault();
 
         public void OnGet()
         {
