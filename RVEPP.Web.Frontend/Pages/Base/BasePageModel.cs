@@ -10,5 +10,7 @@ namespace RVEPP.Web.Frontend.Pages.Base
         protected Content? GetLatestContentByType(Enums.ContentTypes type) =>
             dbContext.Content.Where(a => a.ContentType == type && a.Active).OrderByDescending(a => a.Created).FirstOrDefault();
 
+        protected IEnumerable<Content>? GetContentByType(Enums.ContentTypes type) => [.. dbContext.Content.Where(a => a.ContentType == type && a.Active)];
+
     }
 }
