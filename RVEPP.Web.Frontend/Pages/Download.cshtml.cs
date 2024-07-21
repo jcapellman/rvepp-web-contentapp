@@ -10,7 +10,7 @@ namespace RVEPP.Web.Frontend.Pages
 
         public void OnGet()
         {
-            Downloads = [.. dbContext.Content.Where(a => a.ContentType == Enums.ContentTypes.Downloads && a.Active).OrderByDescending(a => a.Modified)];
+            Downloads = GetContentByType(Enums.ContentTypes.Downloads)?.OrderByDescending(a => a.Modified).ToList();
         }
     }
 }
