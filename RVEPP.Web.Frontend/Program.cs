@@ -36,7 +36,7 @@ namespace RVEPP.Web.Frontend
                         ValidIssuer = apiConfig?.JWTIssuer,
                         ValidAudience = apiConfig?.JWTAudience,
                         ClockSkew = TimeSpan.Zero,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig is null ? throw new Exception("apiconfig was null") : apiConfig.JWTSecret))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig is null ? throw new ArgumentNullException("apiconfig was null") : apiConfig.JWTSecret))
                     };
                 });
             }
@@ -47,7 +47,9 @@ namespace RVEPP.Web.Frontend
 
             if (configuration.Value is null)
             {
-                throw new Exception("Configuration not set");
+                Console.WriteLine("Configuration not set");
+
+                return;
             }
 
             builder.Services.AddControllers();

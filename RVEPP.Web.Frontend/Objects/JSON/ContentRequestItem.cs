@@ -6,7 +6,7 @@ namespace RVEPP.Web.Frontend.Objects.JSON
     {
         public int? Id { get; set; }
 
-        public ContentTypes ContentType { get; set; }
+        public required ContentTypes ContentType { get; set; }
 
         public required string Title { get; set; }
 

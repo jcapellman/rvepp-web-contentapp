@@ -7,7 +7,9 @@
 }
 
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -29,11 +31,6 @@ footer {
     color: var(--dark-text-color);
     text-align: center;
     font-size: x-small;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
 }
 
 body {
