@@ -1,4 +1,7 @@
 ﻿@page
+
+@using RVEPP.Web.Frontend.Common
+
 @model RVEPP.Web.Frontend.Pages.AboutModel
 @{
     ViewData["Title"] = "About";
@@ -6,8 +9,14 @@
 
 <div class="text-left">
     <h1 class="display-4 text-rvepp-bright">About</h1>
-    <p>
-        Coming soon...
-    </p>
-</div>
 
+    @if (Model.AboutContent is null)
+    {
+        <p>
+            Coming soon...
+        </p>
+    } else
+    {
+        @Model.AboutContent.Body.ToHtmlString()
+    }
+</div>

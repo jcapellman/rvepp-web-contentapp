@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+
 using RVEPP.Web.Frontend.Configuration;
 using RVEPP.Web.Frontend.Common;
 using RVEPP.Web.Frontend.Objects.JSON;
-using System.Globalization;
+
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -38,6 +39,11 @@ namespace RVEPP.Web.Frontend.Controllers
         [HttpPost]
         public ActionResult<string> Login(UserLoginRequestItem userLogin)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var hashToken = (userLogin.UserName + userLogin.Password).ToSha256();
 
             if (!string.Equals(hashToken, apiConfiguration.JWTHashToken, StringComparison.InvariantCultureIgnoreCase))
