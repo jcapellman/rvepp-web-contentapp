@@ -36,7 +36,7 @@ namespace RVEPP.Web.Frontend
                         ValidIssuer = apiConfig?.JWTIssuer,
                         ValidAudience = apiConfig?.JWTAudience,
                         ClockSkew = TimeSpan.Zero,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig is null ? throw new ArgumentNullException("apiconfig was null") : apiConfig.JWTSecret))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiConfig is not null ? apiConfig.JWTSecret : throw new ArgumentNullException("apiconfig was null")))
                     };
                 });
             }
