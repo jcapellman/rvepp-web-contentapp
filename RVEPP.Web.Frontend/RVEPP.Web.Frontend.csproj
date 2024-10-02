@@ -18,16 +18,16 @@
 	  <RuntimeIdentifier>linux-musl-x64</RuntimeIdentifier>
   </PropertyGroup>
 
-  <ItemGroup>
-	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <ItemGroup>
+	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
 	<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
-	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
+	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.0" />
 	<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
 	<PackageReference Include="Markdig" Version="0.37.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
 		<PrivateAssets>all</PrivateAssets>
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
   </ItemGroup>
 </Project>
